@@ -10,6 +10,7 @@ namespace robot.Tests
         [TestMethod]
         public void ControllerExists()
         {
+
             Assert.IsNotNull(new HomeController());
         }
     }
