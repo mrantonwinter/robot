@@ -9,7 +9,7 @@ namespace robot
         public static void RegisterBundles(BundleCollection bundles)
         {
             //styles
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/angular-material.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/angular-material.css", "~/Content/Site.css"));
 
             //javascript libraries
             bundles.Add(new ScriptBundle("~/bundles/libs").Include("~/Scripts/angular-material.js"));

@@ -1,1 +1,66 @@
-﻿aws
+﻿
+
+<div class="tabsdemoStaticTabs">
+    <md-tabs md-selected="data.selectedIndex">
+        <md-tab id="tab1">
+            Item One
+        </md-tab>
+        <md-tab id="tab2">
+            Item two
+        </md-tab>
+    </md-tabs>
+    <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab1-content" ng-switch-when="0">
+            <div>
+                <form>
+                    <md-checkbox ng-model="isChecked" aria-label="Finished?">
+                        Finished ?
+                    </md-checkbox>
+                    <md-button>
+                        Button
+                    </md-button>
+                    <md-radio-group ng-model="selected">
+                        <md-radio-button>
+                            radio 1
+                        </md-radio-button>
+                        <md-radio-button>
+                            radio 2
+                        </md-radio-button>
+                    </md-radio-group>
+                </form>
+
+                <md-list>
+                    <md-item>
+                        <div class="md-tile-content">
+                            Item content in list
+                        </div>
+                    </md-item>
+                    <md-item>
+                        <div class="md-tile-content">
+                            Item content in list
+                        </div>
+                    </md-item>
+                    <md-item>
+                        <div class="md-tile-content">
+                            Item content in list
+                        </div>
+                    </md-item>
+                    <md-item>
+                        <div class="md-tile-content">
+                            Item content in list
+                        </div>
+                    </md-item>
+                    <md-item>
+                        <div class="md-tile-content">
+                            Item content in list
+                        </div>
+                    </md-item>
+                </md-list>
+                <md-progress-circular md-theme="blue" md-mode="indeterminate"></md-progress-circular>
+            </div>
+        </div>
+        <div role="tabpanel" id="tab2-content" ng-switch-when="1">
+        </div>
+    </ng-switch>
+
+</div>
