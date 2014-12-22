@@ -1,0 +1,30 @@
+﻿<!--Error Messages-->
+<div ng-controller="ErrorController">
+    <div class="row hidden" >
+        <div class="col-xs-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h2>Not logged in</h2>
+                </div>
+                <div class="panel-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" ng-repeat="error in Errors">
+        <div class="col-xs-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <button type="button" class="close" ng-click="RemoveError(error)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h6>Error code:{{error.ErrorCode}}</h6>
+                    <h4>Error message: {{error.ErrorMessage}}</h4>
+                </div>
+                <div class="panel-body">
+                    <p class="BE noxoverflow">{{error.ErrorDetail}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,11 @@
-﻿html, body{
-    height: 100%;
+﻿html, body {
+    min-height: 100%;
+}
+
+.BE.fullheight {
+    min-height: 100%;
+}
+
+textarea{
+    resize:vertical;
 }

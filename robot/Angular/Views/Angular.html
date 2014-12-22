@@ -1,1 +1,59 @@
-﻿angular
+﻿<md-toolbar class="md-hue-4">
+    <h2 class="md-toolbar-tools ">
+        <span>Angular</span>
+    </h2>
+</md-toolbar>
+<pre>
+public class aaaRepository : IaaaRepository
+{
+    TBSAdminEntities dbContext = new TBSAdminEntities();
+    IaaaDal _aaaDal;
+    protected const int BatchSize = 10000;
+    protected string TbsConnectionString = ConfigurationManager.ConnectionStrings["TBSConnection"].ConnectionString;
+    protected string TbsAdminConnectionString = ConfigurationManager.ConnectionStrings["TBSAdminConnection"].ConnectionString;
+    protected string DestinationTableName = "PromoEligibleClient";
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    // automapper setup
+    public aaaRepository(IaaaDal _aaaDal)
+    {
+        AutoMapper.Mapper.CreateMap<aaalist_result, aaa>();
+        AutoMapper.Mapper.CreateMap<aaaupdate_result, aaaupdateresult>();
+        AutoMapper.Mapper.CreateMap<aaadelete_result, aaadeleteresult>();
+        this._aaaDal = _aaaDal;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    // CRUD functions for aaa 
+    public IEnumerable<aaa>Getaaa()
+    {
+        return dbContext.aaaList().Map<aaalist_result, aaa>();
+    }
+    public aaaUpdateResult Updateaaa(aaa aaa)
+    {
+        return dbContext.aaaUpdate(
+            aaa.id,
+            aaa.name,
+            aaa.email,
+            aaa.dob,
+            aaa.groupID,
+            aaa.cool,
+        ).Map<aaaupdate_result, aaaupdateresult>().FirstOrDefault();
+    }
+    public int Insertaaa(aaa aaa)
+    {
+        var Result = dbContext.aaaInsert(
+            aaa.id,
+            aaa.name,
+            aaa.email,
+            aaa.dob,
+            aaa.groupID,
+            aaa.cool,
+        );
+        return Result.Select(x => x.aaaID).FirstOrDefault().Value;
+    }
+    public aaaDeleteResult Deleteaaa(int id)
+    {
+        return dbContext.aaaDelete(id).Map<aaadelete_result, aaadeleteresult>().FirstOrDefault();
+    }
+}
+    
+</pre>

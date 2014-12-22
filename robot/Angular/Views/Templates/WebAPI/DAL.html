@@ -1,3 +1,15 @@
-﻿<script>
-    alert('test');
-</script>
+﻿<p>
+    <button class="btn btn-info btn-lg" ng-click="ShowDAL=!ShowDAL">DAL</button>
+</p>
+<div ng-hide="ShowDAL">
+    <p>
+        <input class="form-control input-lg " ng-model="Model.FunctionName" placeholder="Function name">
+        <input type="checkbox" ng-model="Detail.IsList"> Returns a list?
+    </p>
+<pre>
+public <span ng-show="Detail.IsList">IEnumerable<</span>{{Model.Name}}<span ng-show="Detail.IsList">></span> {{Model.FunctionName}}(<span ng-repeat="param in Detail.Input">{{param.MappedType}} {{param.Name | removeat}}, </span>)
+{
+    db.{{Detail.Name |removedot}}(<span ng-repeat="param in Detail.Input">{{param.Name | removeat}}, </span>);
+}
+</pre>
+</div>

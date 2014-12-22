@@ -1,0 +1,11 @@
+﻿<p>
+    <button class="btn btn-info btn-lg" ng-click="ShowModel=!ShowModel">Model</button>
+    <input class="form-control input-lg " ng-model="Model.Name" placeholder="Model name">
+</p>
+<pre ng-hide="ShowModel">
+public {{Model.Name}}
+{
+    <span ng-repeat="param in Detail.Output">public {{param.MappedType}} {{param.Name}} { get; set; }
+    </span>
+}
+</pre>
