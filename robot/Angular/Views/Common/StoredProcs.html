@@ -1,0 +1,23 @@
+﻿<div class="form-group " ng-class="{'has-success':Search.StoredProc != '' && Search.StoredProc != null}">
+
+    <div class="input-group">
+        <span class="input-group-addon"><i class="mdi-action-search"></i></span>
+        <input class="form-control input-sm floating-label" ng-model="Search.StoredProc" placeholder="Stored procedure search">
+    </div>
+</div>
+
+
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <td>Stored procedure </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in filtered = (Model.rows | filter:Search.StoredProc) | offset:(currentPage-1)*rowsPerPage | limitTo:rowsPerPage track by $index" ng-class="{info: row==Selected}" ng-click="Select(row)">
+            <td>{{row}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<pagination class="btn-sm " total-items="filtered.length" items-per-page="rowsPerPage" ng-model="currentPage" ng-change="PageChanged()" max-size="maxPages" boundary-links="showFirstLast" rotate="false"></pagination>

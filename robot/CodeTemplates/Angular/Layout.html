@@ -1,0 +1,15 @@
+﻿
+&lt;div class="container-fluid BE tabcontainer" ng-controller="{{Model.Name}}Controller"&gt;
+    &lt;div class="row"&gt;
+        &lt;!--master--&gt;
+        &lt;div class="col-lg-6"&gt;
+            &lt;div ng-include src='"Angular/Views/{{Project}}/{{Model.Name}}Tab/{{Model.Name}}Table.html"'&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!--detail--&gt;
+        &lt;div class="col-lg-6"&gt;
+            &lt;div ng-include src='"Angular/Views/{{Project}}/{{Model.Name}}Tab/{{Model.Name}}Detail.html"'&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+

@@ -1,0 +1,127 @@
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////
+// {{Model.Name}} Controller
+
+app.controller('{{Model.Name}}Controller', function ($scope, $rootScope, {{Model.Name}}Service, RuntimeFrameworkService, ModalService) {
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    // Init
+
+    //use the service to populate our {{Model.Name}}
+    $scope.Model = {{Model.Name}}Service.Model;
+    {{Model.Name}}Service.Get{{Model.Name}}();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    // Master detail
+
+    $scope.Edit = false;
+    //reference to our selected row
+    $scope.Selected = null;
+
+    var Original = null;
+
+    //called when a row is selected
+    $scope.Select = function (selected) {
+        if ($scope.Edit) {
+            ModalService.Message("Warning!", "You cannot change your selection while editing");
+            return;
+        }        //clone our object in case we need to revert it
+        Original = RuntimeFrameworkService.Clone(selected);
+
+        $scope.Selected = selected;
+    }
+
+
+    //edit
+    $scope.Edit{{Model.Name}} = function () {
+        $scope.Edit = true;
+    }
+
+    //save
+    $scope.Save{{Model.Name}} = function () {
+            {{Model.Name}}Service.Upsert{{Model.Name}}($scope.Selected, $scope.Selected.{{Model.Name}}ID == -1 ? "POST" : "PUT")
+        .success(function (id) {
+            if (id != null && id != "")
+                $scope.Selected.{{Model.Name}}ID = id;
+            $scope.Edit = false;
+        })
+        .error(function (data, status, headers, config) {
+            $rootScope.$broadcast("errorpopup", "Problem saving", data);
+        });
+    }
+
+    //new
+    $scope.New{{Model.Name}} = function () {
+        AddNew{{Model.Name}}Internal(
+            //******TODO - YOU NEED TO******* create a json object with the default values here for {{Model.Name}}
+        );
+    }
+
+    //clone to a new copy
+    $scope.Copy{{Model.Name}} = function () {
+        var clone = RuntimeFrameworkService.Clone($scope.Selected);
+        clone.{{Model.Name}}ID = -1;
+        AddNew{{Model.Name}}Internal(clone);
+    }
+
+    //internal function for adding a new item
+    function AddNew{{Model.Name}}Internal(newitem) {
+        {{Model.Name}}Service.Add{{Model.Name}}(newitem);
+        $scope.Select(newitem);
+        $scope.Edit = true;
+    }
+
+
+    //reset any changes
+    $scope.Reset{{Model.Name}} = function () {
+        RuntimeFrameworkService.LoadFrom($scope.Selected, Original);
+        $scope.Edit = false;
+    }
+
+
+    //delete
+    $scope.Delete{{Model.Name}} = function () {
+        ModalService.Confirmation("Delete {{Model.Name}}?", $scope.Selected.{{Model.Name}}ID + ": " + $scope.Selected.Description)
+        .then(function () {
+            Delete{{Model.Name}}Internal();
+        }, function () {
+            //cancel pressed
+        });
+    };
+
+        function Delete{{Model.Name}}Internal() {
+        //handle if we havent saved yet
+            if ($scope.Selected.{{Model.Name}}ID == -1) {
+                Delete{{Model.Name}}FromViewInternal()
+            return;
+        }
+
+        //call the backend to persist
+            {{Model.Name}}Service.Delete{{Model.Name}}($scope.Selected.{{Model.Name}}ID)
+        .success(function (data) {
+            Delete{{Model.Name}}FromViewInternal();
+        })
+        .error(function (data, status, headers, config) {
+            $rootScope.$broadcast("error", status, 'url = ' + url, config)
+        });
+    }
+
+    //removes the items from the view ( not the backend )
+        function Delete{{Model.Name}}FromViewInternal() {
+            {{Model.Name}}Service.Model.{{Model.Name}}.rows = _.without({{Model.Name}}Service.Model.{{Model.Name}}.rows, $scope.Selected);
+        $scope.Select(null);
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    // list pagination
+
+    $scope.rowsPerPage = 18;
+    $scope.currentPage = 1;
+
+    $scope.setPage = function (pageNo) { $scope.currentPage = pageNo; };
+
+    //event handler for page change
+    $scope.PageChanged = function () {
+        $scope.Selected = null;
+    };
+});

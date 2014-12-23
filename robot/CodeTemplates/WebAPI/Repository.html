@@ -1,0 +1,53 @@
+﻿public class {{Model.Name}}Repository : I{{Model.Name}}Repository
+{
+    TBSAdminEntities dbContext = new TBSAdminEntities();
+    I{{Model.Name}}Dal _{{Model.Name|lowercase}}Dal;
+
+    protected const int BatchSize = 10000;
+    protected string TbsConnectionString = ConfigurationManager.ConnectionStrings["TBSConnection"].ConnectionString;
+    protected string TbsAdminConnectionString = ConfigurationManager.ConnectionStrings["TBSAdminConnection"].ConnectionString;
+    protected string DestinationTableName = "PromoEligibleClient";
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    // automapper setup
+
+    public {{Model.Name}}Repository(I{{Model.Name}}Dal _{{Model.Name|lowercase}}Dal)
+    {
+        AutoMapper.Mapper.CreateMap<{{Model.Name}}list_result, {{Model.Name}}>();
+        AutoMapper.Mapper.CreateMap<{{Model.Name}}update_result, {{Model.Name}}updateresult>();
+        AutoMapper.Mapper.CreateMap<{{Model.Name}}delete_result, {{Model.Name}}deleteresult>();
+
+        this._{{Model.Name|lowercase}}Dal = _{{Model.Name|lowercase}}Dal;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    // CRUD functions for {{Model.Name}}
+
+    public IEnumerable<{{Model.Name}}> Get{{Model.Name}}()
+    {
+        return dbContext.{{Model.Name}}List().Map<{{Model.Name|lowercase}}list_result, {{Model.Name}}>();
+    }
+
+    public {{Model.Name}}UpdateResult Update{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}})
+    {
+        return dbContext.{{Model.Name}}Update(
+            <span ng-repeat="param in Detail.Input">{{Model.Name|lowercase}}.{{param.Name | removeat}}<span ng-hide="$last">, </span>
+            </span>
+        ).Map<{{Model.Name}}update_result, {{Model.Name}}updateresult>().FirstOrDefault();
+    }
+
+    public int Insert{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}})
+    {
+        var Result = dbContext.{{Model.Name}}Insert(
+            <span ng-repeat="param in Detail.Input">{{Model.Name|lowercase}}.{{param.Name | removeat}}<span ng-hide="$last">, </span>
+            </span>
+        );
+
+        return Result.Select(x => x.{{Model.Name}}ID).FirstOrDefault().Value;
+    }
+
+    public {{Model.Name}}DeleteResult Delete{{Model.Name}}(int id)
+    {
+        return dbContext.{{Model.Name}}Delete(id).Map<{{Model.Name}}delete_result, {{Model.Name}}deleteresult>().FirstOrDefault();
+    }
+}

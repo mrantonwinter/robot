@@ -1,7 +1,7 @@
 ﻿<p>
     <button class="btn btn-default btn-sm" ng-click="ShowRaw=!ShowRaw">Raw data</button>
 <pre ng-show="ShowRaw">
-{{Detail |json}}
+<div ng-include src='"CodeTemplates/Common/RawData.html"'></div>
 </pre>
 
 </p>

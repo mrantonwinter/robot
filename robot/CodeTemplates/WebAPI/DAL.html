@@ -1,0 +1,4 @@
+﻿public <span ng-show="Detail.IsList">IEnumerable<</span>{{Model.Name}}<span ng-show="Detail.IsList">></span> {{Model.FunctionName}}(<span ng-repeat="param in Detail.Input">{{param.MappedType}} {{param.Name | removeat}}<span ng-hide="$last">, </span> </span>)
+{
+    db.{{Detail.Name |removedot}}(<span ng-repeat="param in Detail.Input">{{param.Name | removeat}}<span ng-hide="$last">, </span> </span>);
+}

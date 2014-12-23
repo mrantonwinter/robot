@@ -1,0 +1,21 @@
+﻿<p>
+    <button class="btn btn-primary btn-lg" ng-click="ShowLayout=!ShowLayout">Layout</button>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="mdi-content-create"></i></span>
+                <input class="form-control input-lg floating-label" ng-model="Model.Name" placeholder="Model name">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="mdi-content-create"></i></span>
+                <input class="form-control input-lg floating-label" ng-model="Project" placeholder="Project name">
+            </div>
+        </div>
+
+    </div>
+</p>
+<pre ng-show="ShowLayout">
+<div ng-include src='"CodeTemplates/Angular/Layout.html"'></div>
+</pre>

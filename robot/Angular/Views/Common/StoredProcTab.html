@@ -1,0 +1,17 @@
+﻿
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <h2>{{Title}}</h2>
+
+        <div ng-include src='"Angular/Views/Common/StoredProcs.html"'></div>
+
+        <div ng-hide="Selected==null">
+            <div ng-repeat="template in Templates">
+                <div ng-include src="template"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,27 @@
+﻿<p>
+    <button class="btn btn-primary " ng-click="ShowDAL=!ShowDAL" >DAL</button>
+</p>
+<div ng-show="ShowDAL" >
+    <p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="mdi-content-create"></i></span>
+                    <input class="form-control input-lg floating-label" ng-model="Model.FunctionName" placeholder="Function name">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="checkbox" style="margin-top:0px;">
+                        <label>
+                            <input type="checkbox" ng-model="Detail.IsList"> Returns a list?
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p>
+<pre>
+<div ng-include src='"CodeTemplates/WebAPI/DAL.html"'></div>
+</pre>
+</div>

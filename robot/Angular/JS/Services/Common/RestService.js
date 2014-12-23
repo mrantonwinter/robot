@@ -101,6 +101,7 @@ app.factory('RestService', ['$rootScope', '$http', '$q', function ($rootScope, $
                 model.rows = data;
                 model.loading = false
                 model.count = data.length;
+                $rootScope.$broadcast("populated");
             })
             .error(function (data, status, headers, config) {
                 service.Clear(model);

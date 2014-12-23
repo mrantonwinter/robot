@@ -3,16 +3,20 @@
     $scope.Model = StoredProcService.Model;
     StoredProcService.Init();
 
+    $scope.Title = "WebAPI";
+
+    $scope.Search = {
+        StoredProc: ""
+    };
+
+    $scope.Templates = ["Angular/Views/Common/RawData.html", "Angular/Views/WebAPI/Model.html", "Angular/Views/WebAPI/DAL.html", "Angular/Views/WebAPI/Controller.html", "Angular/Views/WebAPI/IService.html", "Angular/Views/WebAPI/Service.html", "Angular/Views/WebAPI/IRepository.html", "Angular/Views/WebAPI/Repository.html"];
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
-
 
     $scope.Selected = null;
     $scope.Detail = null;
     $scope.Model.Name = null;
     $scope.Model.FunctionName = null;
-
-
 
     $scope.Select = function (row) {
         $scope.Detail = null;
@@ -24,6 +28,7 @@
             StoredProcService.Detail(row)
                 .success(function (data) {
                     $scope.Detail = MapTypes(data);
+                    $rootScope.$broadcast("loaded");
                 })
                 .error(function (data) {
 

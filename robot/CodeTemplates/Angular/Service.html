@@ -1,0 +1,45 @@
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////
+// {{Model.Name}} Service.
+
+
+app.factory('{{Model.Name}}Service', ['$rootScope', 'RestService', function ($rootScope, RestService) {
+
+    var service = {
+
+        Model: {
+            //{{Model.Name}}
+            {{Model.Name}}: { rows: [], loading: false, count: 0 },
+        },
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        // {{Model.Name}}
+
+        Get{{Model.Name}}: function (refresh) {
+            if (service.Model.{{Model.Name}}.count == 0 || refresh == true)
+                RestService.GetAndPopulate('/MarketingAdminRestAPI/api/{{Model.Name}}', service.Model.{{Model.Name}});
+        },
+
+        Add{{Model.Name}}: function ({{Model.Name}}) {
+            service.Model.{{Model.Name}}.rows.unshift({{Model.Name}});//add to the start of the list
+        },
+
+        Update{{Model.Name}}: function ({{Model.Name}}) {
+            RestService.Update('/MarketingAdminRestAPI/api/{{Model.Name}}', {{Model.Name}});
+        },
+
+        Insert{{Model.Name}}: function ({{Model.Name}}) {
+            RestService.Insert('/MarketingAdminRestAPI/api/{{Model.Name}}', {{Model.Name}});
+        },
+
+        Upsert{{Model.Name}}: function ({{Model.Name}}, verb) {
+            return RestService.Upsert('/MarketingAdminRestAPI/api/{{Model.Name}}', {{Model.Name}}, verb);
+        },
+
+        Delete{{Model.Name}}: function (id) {
+            return RestService.Delete('/MarketingAdminRestAPI/api/{{Model.Name}}/' + id);
+        },
+    }
+
+    return service;
+}]);
