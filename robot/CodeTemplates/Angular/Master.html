@@ -6,7 +6,7 @@
     &lt;/thead&gt;
     &lt;tbody&gt;
         &lt;tr ng-repeat="row in Model.<span>{{Model.Name}}</span>.rows" ng-class="{info: row==Selected}" ng-click="Select(row)"&gt;<span ng-repeat="column in Detail.Output">
-            &lt;td&gt;<span ng-non-bindable>{{row.</span>{{column.Name}}<span ng-non-bindable>}}</span>&lt;/td&gt;</span>
+            &lt;td&gt;{{"{{"}}row.{{column.Name}}}}&lt;/td&gt;</span>
         &lt;/tr&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;

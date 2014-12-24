@@ -1,4 +1,4 @@
-﻿app.controller("Angular", function ($scope, $rootScope, StoredProcService, TemplateService) {
+﻿app.controller("Angular", function ($scope, $rootScope, $http, $compile, StoredProcService, TemplateService) {
 
     $scope.Model = StoredProcService.Model;
     StoredProcService.Init();
@@ -8,6 +8,15 @@
     $scope.Search = {
         StoredProc: ""
     };
+    $scope.Data = { Project: "test" };
+
+    $scope.Detail = "";
+    $scope.DetailHTML = "";
+    $scope.Templates = {
+        Master: null,
+        Detail: null
+    }
+
 
     $scope.Templates = ["Angular/Views/Common/RawData.html", "Angular/Views/Angular/Layout.html", "Angular/Views/Angular/Master.html", "Angular/Views/Angular/Detail.html", "Angular/Views/Angular/Controller.html", "Angular/Views/Angular/Service.html"];
 
@@ -29,12 +38,33 @@
                 .success(function (data) {
                     $scope.Detail = MapTypes(data);
                     $rootScope.$broadcast("loaded");
+                    CalcDetailHTML();
                 })
                 .error(function (data) {
 
                 });
         }
     }
+    function CalcDetailHTML() {
+        $http.get('/CodeTemplates/Angular/Detail.html')
+        .success(function (data) {
+            $scope.Templates.Detail = data;
+            //            UpdateTemplates();
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+    }
+
+    //$scope.$watch('Data.Project', function () {
+    //    UpdateTemplates();
+    //});
+
+    //function UpdateTemplates() {
+    //if ($scope.DetailTemplate != null)
+    //    $('#detailpreview').html($compile($scope.DetailTemplate)($scope));
+
+    //}
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
 

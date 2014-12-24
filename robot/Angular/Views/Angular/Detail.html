@@ -1,6 +1,10 @@
 ﻿<p>
     <button class="btn btn-primary btn-lg" ng-click="ShowDetail=!ShowDetail">Detail</button>
 </p>
-<pre ng-show="ShowDetail">
-    <div ng-include src='"CodeTemplates/Angular/Detail.html"'></div>
+
+<!--<pre id="detailpreview" ng-show="ShowDetail">
+</pre>-->
+
+<pre >
+{{Templates.Detail}}
 </pre>
