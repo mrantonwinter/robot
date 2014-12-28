@@ -170,13 +170,13 @@
   <ItemGroup>
     <Content Include="Angular\JS\app.js" />
     <Content Include="Angular\JS\Controllers\Angular.js" />
+    <Content Include="Angular\JS\Controllers\PHP.js" />
     <Content Include="Angular\JS\Controllers\AWS.js" />
     <Content Include="Angular\JS\Controllers\Common\ErrorController.js" />
     <Content Include="Angular\JS\Controllers\Common\Modals\ConfirmationModalController.js" />
     <Content Include="Angular\JS\Controllers\Common\Modals\MessageModalController.js" />
     <Content Include="Angular\JS\Controllers\Common\Modals\PleaseWaitModalController.js" />
     <Content Include="Angular\JS\Controllers\Common\Navigation.js" />
-    <Content Include="Angular\JS\Controllers\PHP.js" />
     <Content Include="Angular\JS\Controllers\WebAPI.js" />
     <Content Include="Angular\JS\Filter\RemoveDot.js" />
     <Content Include="Angular\JS\Filter\Offset.js" />
@@ -215,8 +215,8 @@
     <Content Include="Angular\Views\WebAPI\Controller.html" />
     <Content Include="Angular\Views\WebAPI\IRepository.html" />
     <Content Include="Angular\Views\WebAPI\IService.html" />
-    <Content Include="Angular\Views\WebAPI\Model.html" />
     <Content Include="Angular\Views\Common\RawData.html" />
+    <Content Include="Angular\Views\WebAPI\Model.html" />
     <Content Include="Angular\Views\WebAPI\Repository.html" />
     <Content Include="Angular\Views\WebAPI\Service.html" />
     <Content Include="CodeTemplates\Angular\Controller.html" />
@@ -232,6 +232,7 @@
     <Content Include="CodeTemplates\Common\RawData.html" />
     <Content Include="CodeTemplates\WebAPI\Repository.html" />
     <Content Include="CodeTemplates\WebAPI\Service.html" />
+    <Content Include="Content\Animation.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -269,9 +270,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\icons\Angular.png" />
     <Content Include="images\icons\AWS.png" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="images\icons\ic_perm_data_setting_24px.svg" />
     <Content Include="images\icons\ic_perm_data_setting_white_18dp.png" />
     <Content Include="images\icons\PHP.png" />
+    <Content Include="images\icons\robot.png" />
+    <Content Include="images\icons\robot.svg" />
     <Content Include="images\icons\WebAPI.png" />
     <Content Include="Scripts\angular-material.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />

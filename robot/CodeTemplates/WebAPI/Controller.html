@@ -4,10 +4,6 @@
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    /// &lt;summary&gt;
-    /// Constructor, dependencies are injected in
-    /// &lt;/summary&gt;
-    /// <param name="businessLayer"></param>
     public {{Model.Name}}Controller(I{{Model.Name}}Service businessLayer)
     {
         this.BusinessLayer = businessLayer;
@@ -16,43 +12,24 @@
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //  CRUD for {{Model.Name}}
 
-    /// &lt;summary&gt;
-    /// Create
-    /// &lt;/summary&gt;
-    /// <param name="{{Model.Name|lowercase}}"></param>
-    /// &lt;returns&gt;&lt;/returns&gt;
     [HttpPost, Route("api/{{Model.Name}}")]
-    public decimal Insert{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}})
+    public int Insert{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}})
     {
         return BusinessLayer.Insert{{Model.Name}}({{Model.Name|lowercase}});
     }
 
-    /// &lt;summary&gt;
-    /// Read
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
     [HttpGet, Route("api/{{Model.Name}}")]
-    public IEnumerable<{{Model.Name}}>
-    Get{{Model.Name}}()
+    public IEnumerable<{{Model.Name}}> Get{{Model.Name}}()
     {
         return BusinessLayer.Get{{Model.Name}}();
     }
 
-    /// &lt;summary&gt;
-    /// update
-    /// &lt;/summary&gt;
-    /// <param name="{{Model.Name|lowercase}}"></param>
     [HttpPut, Route("api/{{Model.Name}}")]
-    public void Put{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}})
+    public int Put{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}})
     {
-        BusinessLayer.Update{{Model.Name}}({{Model.Name|lowercase}});
+        return BusinessLayer.Update{{Model.Name}}({{Model.Name|lowercase}});
     }
 
-    /// &lt;summary&gt;
-    /// Delete
-    /// &lt;/summary&gt;
-    /// <param name="id"></param>
-    /// &lt;returns&gt;&lt;/returns&gt;
     [HttpDelete, Route("api/{{Model.Name}}/{id}")]
     public {{Model.Name}}DeleteResult Delete{{Model.Name}}(int id)
     {

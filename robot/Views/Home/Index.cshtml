@@ -1,1 +1,11 @@
-﻿
+﻿<div class="container-fluid ">
+    <div ng-include src='"Angular/Views/Common/ErrorPanel.html"' />
+</div>
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-2 " ng-controller="Navigation" ng-include src='"Angular/Views/Common/SideMenu.html"'></div>
+        <div class="col-md-10 BE animatetabs" ng-view >
+        </div>
+    </div>
+</div>
