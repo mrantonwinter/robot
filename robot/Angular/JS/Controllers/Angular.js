@@ -48,23 +48,26 @@
     function CalcDetailHTML() {
         $http.get('/CodeTemplates/Angular/Detail.html')
         .success(function (data) {
-            $scope.Templates.Detail = data;
-            //            UpdateTemplates();
+            $scope.Templates.Detail = data;//.replace(/[<]/g, '&lt;').replace(/[>]/g, '&gt;');
+            UpdateTemplates();
         })
         .error(function (data) {
             console.log(data);
         });
     }
 
-    //$scope.$watch('Data.Project', function () {
-    //    UpdateTemplates();
-    //});
+    $scope.$watch('Data.Project', function () {
+        UpdateTemplates();
+    });
 
-    //function UpdateTemplates() {
-    //if ($scope.DetailTemplate != null)
-    //    $('#detailpreview').html($compile($scope.DetailTemplate)($scope));
+    function UpdateTemplates() {
+        if ($scope.Templates.Detail != null) {
+            var html = $compile($scope.Templates.Detail)($scope);
+            $('#detailpreview').html(html);
+        }
+            
 
-    //}
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
