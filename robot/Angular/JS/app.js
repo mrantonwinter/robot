@@ -3,7 +3,7 @@
 //route config
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
+      .when('/Angular', {
           templateUrl: '/Angular/Views/Common/StoredProcTab.html',
           controller: 'Angular'
       })
@@ -20,7 +20,7 @@ app.config(function ($routeProvider, $locationProvider) {
           controller: 'WebAPI'
       })
       .otherwise({
-          redirectTo: '/'
+          redirectTo: '/Angular'
       });
 
     //$locationProvider.html5Mode(true);

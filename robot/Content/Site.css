@@ -10,24 +10,37 @@ textarea {
     resize: vertical;
 }
 
-.fadein,
-.fadeout {
-    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s;
-    -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s;
-    -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s;
-    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s;
+/*side menu*/
+.BE.sidemenuheader {
+    display: table;
+    margin: 0 auto;
+    margin-top: -15px;
 }
 
-    .fadein.ng-hide-remove,
-    .fadeout.ng-hide-add.ng-hide-add-active {
-        opacity: 0;
-        display: block !important;
-        height: 0px;
-        overflow: hidden;
+    .BE.sidemenuheader img {
+        height: 30px;
+        margin-top: -9px;
     }
 
-        .fadeout.ng-hide-add,
-        .fadein.ng-hide-remove.ng-hide-remove-active {
-            opacity: 1;
-            display: block !important;
-        }
+    .BE.sidemenuheader h1, h6 {
+        color: white;
+    }
+
+    .BE.sidemenuheader h6 {
+        font-size: 10.6px;
+        margin-top: -12px;
+        font-weight: 300;
+    }
+
+.BE.sidemenulinks a {
+    text-align: left;
+}
+
+
+/*material design*/
+.btn-material-bluegrey {
+    color: white !important;
+}
+
+
+

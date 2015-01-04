@@ -1,11 +1,13 @@
 ﻿<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3><i class="mdi-social-mood"></i> Robot</h3>
-        <h6>Automated code generator</h6>
+    <div class="panel-heading ">
+        <div class="BE sidemenuheader">
+            <h1><img src="../../../images/icons/robot.svg" /> Robot</h1>
+            <h6>Automated code generator</h6>
+        </div>
     </div>
     <div class="panel-body">
-        <div class="" ng-repeat="link in Links">
-            <a href="#{{link}}" class="btn btn-flat btn-info"><img src="/images/icons/{{link}}.png" height="16px"/> {{link}}</a>
+        <div class="BE sidemenulinks" ng-repeat="link in Links" >
+            <a href="#{{link}}" class="btn btn-default btn-block" ng-class="{ 'btn-material-bluegrey': isActive('/{{link}}')}"><img src="/images/icons/{{link}}.png" height="16px" /> {{link}}</a>
         </div>
     </div>
 </div>

@@ -1,7 +1,10 @@
-﻿public interface I{{Model.Name}}Repository
+﻿class I{{Model.Name}}Repository
 {
+    IEnumerable<{{Model.Name}}> Get{{Model.Name}}();
+
+    int Update{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}});
+
     int Insert{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}});
-    IEnumerable<{{Model.Name|lowercase}}> Get{{Model.Name}}s();
-    {{Model.Name}}UpdateResult Update{{Model.Name}}({{Model.Name}} {{Model.Name|lowercase}});
-    {{Model.Name}}DeleteResult Delete{{Model.Name}}(int {{Model.Name|lowercase}}ID);
+
+    {{Model.Name}}DeleteResult Delete{{Model.Name}}(int id);
 }
